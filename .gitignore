@@ -1,0 +1,17 @@
+# Build output
+/target/
+
+# Local Cargo settings (ps2-video taken from a local folder)
+/.cargo/
+
+# Original game files: copyrighted, never committed
+*.iso
+
+# Python caches of the tools
+__pycache__/
+
+# Anything extracted or decompiled from the original (never published)
+/Tools/work/
+/decompiled/
+
+RELEASE_NOTES.md

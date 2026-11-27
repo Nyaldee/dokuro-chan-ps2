@@ -1,0 +1,36 @@
+[package]
+name = "dokuro-chan-ps2"
+version = "1.0.0"
+edition = "2024"
+description = "Unofficial PC port of Game ni Natta yo! Dokuro-chan ~Kenkou Shindan Daisakusen~ (PS2)"
+license = "GPL-3.0-only"
+
+[[bin]]
+name = "dokuro_chan_ps2"
+path = "src/main.rs"
+
+[dependencies]
+# Fenêtre, souris, OpenGL.
+miniquad = "0.4"
+# Sortie du son, sur un fil prioritaire.
+cpal = { version = "0.18", features = ["realtime"] }
+# Deflate : les captures PNG des tests.
+miniz_oxide = "0.9"
+# Les vidéos PSS (MPEG-2, son PCM).
+ps2-video = { git = "https://github.com/Nyaldee/ps2-video" }
+
+# En debug : le jeu un peu optimisé (il reste débogable), ses dépendances
+# tout à fait (décodage des images et des sons).
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+# En release : le plus petit et le plus rapide possible.
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

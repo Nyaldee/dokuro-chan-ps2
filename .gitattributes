@@ -1,0 +1,6 @@
+# Les .bat sont gardés tels quels, en CRLF : cmd lit mal les fins de ligne
+# Unix, et sans conversion Git ne peut pas les changer.
+*.bat -text
+# Les .sh sont gardés tels quels, en LF : bash refuse les fins de ligne
+# Windows.
+*.sh -text
